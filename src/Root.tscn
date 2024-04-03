@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://chmv6vie403l3"]
 
-[ext_resource type="PackedScene" uid="uid://cg3wme6btdskh" path="res://src/MonczakWorld.tscn" id="1_s6ee5"]
 [ext_resource type="Script" path="res://src/Root.gd" id="1_sdg8a"]
+[ext_resource type="PackedScene" uid="uid://bcw3a4jrumaua" path="res://src/SosivoWorld.tscn" id="2_u8jow"]
 [ext_resource type="PackedScene" uid="uid://dvma0bsrliwvo" path="res://src/ui/Ui.tscn" id="3_057j2"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_sdg8a")
-world_tscn = ExtResource("1_s6ee5")
+world_tscn = ExtResource("2_u8jow")
 
 [node name="UI" parent="." instance=ExtResource("3_057j2")]

@@ -6,12 +6,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jb168"]
 size = Vector2(32, 128)
 
-[node name="Gate" type="AnimatableBody2D"]
+[node name="Gate" type="RigidBody2D" node_paths=PackedStringArray("rb")]
 z_index = 5
 collision_layer = 2
 collision_mask = 7
+mass = 1000.0
+gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_8dnqo")
-DestinationDelta = Vector2(0, -100)
+rb = NodePath(".")
+DestinationDelta = Vector2(0, -128)
+maxStrength = 1e+07
+maxSpeed = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 1)

@@ -1,22 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcw3a4jrumaua"]
+[gd_scene load_steps=6 format=3 uid="uid://bcw3a4jrumaua"]
 
 [ext_resource type="PackedScene" uid="uid://b307l3jmiw4cv" path="res://src/World.tscn" id="1_i0g0t"]
-[ext_resource type="PackedScene" uid="uid://cc54w6n5ncad1" path="res://src/objects/Player.tscn" id="2_tbmnw"]
+[ext_resource type="Script" path="res://src/resources/Interaction.gd" id="2_6xumv"]
+[ext_resource type="PackedScene" uid="uid://j0lb6kqeeuos" path="res://src/objects/Box.tscn" id="2_gvpix"]
+
+[sub_resource type="Resource" id="Resource_8l63m"]
+script = ExtResource("2_6xumv")
+interactable = NodePath("../PeriodicTimer")
+mode = 0
+trigger_mode = 2
+
+[sub_resource type="Resource" id="Resource_wf1h1"]
+script = ExtResource("2_6xumv")
+interactable = NodePath("../MovingPlatform")
+mode = 0
+trigger_mode = 2
 
 [node name="World" instance=ExtResource("1_i0g0t")]
 
-[node name="Camera2D" parent="." index="0" node_paths=PackedStringArray("target")]
-target = NodePath("../Player")
+[node name="Box" parent="Level" index="1"]
+position = Vector2(-360, 127)
 
 [node name="Goo" parent="Level" index="3"]
 position = Vector2(642, 217)
 
-[node name="MovingPlatform" parent="Level" index="4"]
-position = Vector2(306, 68)
+[node name="MovingPlatform" parent="Level" index="4" node_paths=PackedStringArray("rb")]
+position = Vector2(-334, -51)
+rb = NodePath(".")
+DestinationDelta = Vector2(-300, -300)
+maxStrength = 1e+08
+maxSpeed = 100
 
-[node name="Player" parent="." index="2" instance=ExtResource("2_tbmnw")]
-position = Vector2(2, 16)
-animation_speed_idle = 5.0
-animation_speed_full_speed = 5.0
+[node name="MovingPlatform2" parent="Level" index="5" node_paths=PackedStringArray("rb")]
+rb = NodePath(".")
+maxSpeed = 30
+
+[node name="MovingPlatform3" parent="Level" index="6" node_paths=PackedStringArray("rb")]
+rb = NodePath(".")
+maxSpeed = 30
+
+[node name="MovingPlatform4" parent="Level" index="7" node_paths=PackedStringArray("rb")]
+rb = NodePath("../MovingPlatform3")
+maxSpeed = 30
+
+[node name="MovingPlatform5" parent="Level" index="8" node_paths=PackedStringArray("rb")]
+rb = NodePath(".")
+maxSpeed = 30
+
+[node name="Gate" parent="Level" index="10" node_paths=PackedStringArray("rb")]
+rb = NodePath(".")
+maxStrength = 1e+10
+
+[node name="Button" parent="Level" index="12"]
+interactions = Array[ExtResource("2_6xumv")]([SubResource("Resource_8l63m"), SubResource("Resource_wf1h1")])
+
+[node name="Box2" parent="Level" index="17" instance=ExtResource("2_gvpix")]
+position = Vector2(-353, 75)
+
+[node name="Box3" parent="Level" index="18" instance=ExtResource("2_gvpix")]
+position = Vector2(-68, 81)
+
+[node name="Box4" parent="Level" index="19" instance=ExtResource("2_gvpix")]
+position = Vector2(-66, 128)
 
 [editable path="Level"]
