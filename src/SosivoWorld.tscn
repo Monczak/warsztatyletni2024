@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcw3a4jrumaua"]
+[gd_scene load_steps=3 format=3 uid="uid://bcw3a4jrumaua"]
 
 [ext_resource type="PackedScene" uid="uid://b307l3jmiw4cv" path="res://src/World.tscn" id="1_i0g0t"]
+[ext_resource type="PackedScene" uid="uid://cc54w6n5ncad1" path="res://src/objects/Player.tscn" id="2_tbmnw"]
 
 [node name="World" instance=ExtResource("1_i0g0t")]
 
@@ -12,5 +13,10 @@ position = Vector2(642, 217)
 
 [node name="MovingPlatform" parent="Level" index="4"]
 position = Vector2(306, 68)
+
+[node name="Player" parent="." index="2" instance=ExtResource("2_tbmnw")]
+position = Vector2(2, 16)
+animation_speed_idle = 5.0
+animation_speed_full_speed = 5.0
 
 [editable path="Level"]

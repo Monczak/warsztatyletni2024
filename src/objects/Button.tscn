@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://yh50ob3gsxfb"]
+[gd_scene load_steps=7 format=3 uid="uid://yh50ob3gsxfb"]
 
-[ext_resource type="Texture2D" uid="uid://cabwwfn2u5qlb" path="res://icon.svg" id="1_1pseh"]
 [ext_resource type="Script" path="res://src/objects/Button.gd" id="1_oyj55"]
+[ext_resource type="Texture2D" uid="uid://blcajq17xmuuo" path="res://images/ButtonDownPart.png" id="2_13rx2"]
+[ext_resource type="Texture2D" uid="uid://foii74pvx7av" path="res://images/ButtonUpPart.png" id="3_862g8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djdu7"]
-size = Vector2(42, 16)
+size = Vector2(20, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqd3i"]
-size = Vector2(28, 10)
+size = Vector2(12, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxp0a"]
-size = Vector2(30, 20)
+size = Vector2(16, 20)
 
 [node name="Button" type="StaticBody2D"]
 collision_layer = 2
@@ -19,10 +20,13 @@ script = ExtResource("1_oyj55")
 button_force = 4000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.328125, 0.125)
-texture = ExtResource("1_1pseh")
+modulate = Color(1, 0.560784, 0.403922, 1)
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
+texture = ExtResource("2_13rx2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_djdu7")
 
 [node name="MovingPart" type="RigidBody2D" parent="."]
@@ -35,10 +39,12 @@ contact_monitor = true
 max_contacts_reported = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPart"]
-scale = Vector2(0.21875, 0.078125)
-texture = ExtResource("1_1pseh")
+modulate = Color(0.820008, 0, 0.294602, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("3_862g8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPart"]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_wqd3i")
 
 [node name="GrooveJoint2D" type="GrooveJoint2D" parent="."]
@@ -53,5 +59,5 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PressArea"]
-position = Vector2(0, -13)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_wxp0a")

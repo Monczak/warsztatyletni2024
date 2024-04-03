@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://j0lb6kqeeuos"]
 
 [ext_resource type="Script" path="res://src/objects/Box.gd" id="1_ht6cj"]
-[ext_resource type="Texture2D" uid="uid://cabwwfn2u5qlb" path="res://icon.svg" id="2_hfy23"]
+[ext_resource type="Texture2D" uid="uid://ce37ffpagcawq" path="res://images/MetalicTile.png" id="2_es3p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1gty"]
-size = Vector2(38, 38)
+size = Vector2(32, 32)
 
 [node name="Box" type="RigidBody2D"]
 collision_layer = 4
@@ -12,8 +12,8 @@ collision_mask = 7
 script = ExtResource("1_ht6cj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.296875, 0.296875)
-texture = ExtResource("2_hfy23")
+scale = Vector2(2, 2)
+texture = ExtResource("2_es3p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f1gty")

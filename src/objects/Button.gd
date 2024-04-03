@@ -17,42 +17,42 @@ var _prev_state := false
 
 
 func trigger_interactions(turn_on: bool) -> void:
-    for interaction in interactions:
-        var interactable_obj: ObjectInteractable = get_node(interaction.interactable)
-        if turn_on != (interaction.mode == Interaction.InteractionMode.SetOff):
-            interactable_obj.OnInteraction()
-        else:
-            interactable_obj.OffInteraction()
+	for interaction in interactions:
+		var interactable_obj: ObjectInteractable = get_node(interaction.interactable)
+		if turn_on != (interaction.mode == Interaction.InteractionMode.SetOff):
+			interactable_obj.OnInteraction()
+		else:
+			interactable_obj.OffInteraction()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    press_area.body_entered.connect(_on_press_area_entered)
-    press_area.body_exited.connect(_on_press_area_exited)
-    moving_part.set_can_sleep(false)
-    _orig_moving_part_pos = moving_part.position
+	press_area.body_entered.connect(_on_press_area_entered)
+	press_area.body_exited.connect(_on_press_area_exited)
+	moving_part.set_can_sleep(false)
+	_orig_moving_part_pos = moving_part.position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    _pressed = len(_pressing_objs)
-    
-    _state = moving_part.position.y - _orig_moving_part_pos.y > press_threshold
-    if _state and not _prev_state:
-        trigger_interactions(true)
-    elif not _state and _prev_state:
-        trigger_interactions(false)
-    _prev_state = _state
-    
+	_pressed = len(_pressing_objs)
+	
+	_state = moving_part.position.y - _orig_moving_part_pos.y > press_threshold
+	if _state and not _prev_state:
+		trigger_interactions(true)
+	elif not _state and _prev_state:
+		trigger_interactions(false)
+	_prev_state = _state
+	
 
 func _on_press_area_entered(body: Node2D) -> void:
-    _pressing_objs.append(body)
-    
+	_pressing_objs.append(body)
+	
 
 func _on_press_area_exited(body: Node2D) -> void:
-    _pressing_objs.erase(body)
+	_pressing_objs.erase(body)
 
  
 func _physics_process(delta: float) -> void:
-    var dir := Vector2.DOWN if _pressed else Vector2.UP
-    moving_part.apply_central_force(button_force * dir)
+	var dir := Vector2.DOWN if _pressed else Vector2.UP
+	moving_part.apply_central_force(button_force * dir)
