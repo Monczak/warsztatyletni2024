@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0qrg3rcskkx3"]
 
-[ext_resource type="Texture2D" uid="uid://cabwwfn2u5qlb" path="res://icon.svg" id="1_bafng"]
 [ext_resource type="Script" path="res://src/objects/Key.gd" id="1_u1qxe"]
+[ext_resource type="Texture2D" uid="uid://cnk16w2jeqxc8" path="res://images/Key.png" id="2_isfx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15f3f"]
-size = Vector2(38, 38)
+size = Vector2(32, 16)
 
 [node name="Key" type="RigidBody2D"]
 z_index = 5
@@ -17,8 +17,9 @@ script = ExtResource("1_u1qxe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0, 1)
-scale = Vector2(0.296875, 0.296875)
-texture = ExtResource("1_bafng")
+scale = Vector2(2, 2)
+texture = ExtResource("2_isfx2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_15f3f")
