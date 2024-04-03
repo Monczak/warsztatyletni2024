@@ -6,12 +6,17 @@ class_name MovingObject
 var _origin : Vector2
 var _destination : Vector2
 @export var DestinationDelta : Vector2
-@export var _originFlag : bool = true
+
+@export var move_on_start: bool = false
+
+var _originFlag : bool = true
 
 func OnInteraction() -> void:
+	# print(str(self) + " ON!")
 	_originFlag = false
 	
 func OffInteraction() -> void:
+	# print(str(self) + " OFF!")
 	_originFlag = true
 	
 
@@ -19,6 +24,8 @@ func OffInteraction() -> void:
 func _ready() -> void:
 	_origin = position
 	_destination = position + DestinationDelta
+	
+	_originFlag = not move_on_start
 
 var velocity : Vector2 = Vector2.ZERO
 
@@ -40,8 +47,7 @@ func _physics_process(delta : float) -> void:
 		
 	var target := _origin if _originFlag else _destination
 	var move_dir = abs((target - position).normalized())
-	position.x = move_toward(position.x, target.x, move_dir.x * move_speed * delta)
-	position.y = move_toward(position.y, target.y, move_dir.y * move_speed * delta)
+	position = Vector2(move_toward(position.x, target.x, move_dir.x * move_speed * delta), move_toward(position.y, target.y, move_dir.y * move_speed * delta))
 		
 	
 	

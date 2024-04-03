@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name ButtonObj
 
 @export var button_force: float = 100.0
 @export var press_threshold: float = 10
@@ -18,11 +19,7 @@ var _prev_state := false
 
 func trigger_interactions(turn_on: bool) -> void:
 	for interaction in interactions:
-		var interactable_obj: ObjectInteractable = get_node(interaction.interactable)
-		if turn_on != (interaction.mode == Interaction.InteractionMode.SetOff):
-			interactable_obj.OnInteraction()
-		else:
-			interactable_obj.OffInteraction()
+		interaction.do_interaction(self, turn_on)
 
 
 # Called when the node enters the scene tree for the first time.

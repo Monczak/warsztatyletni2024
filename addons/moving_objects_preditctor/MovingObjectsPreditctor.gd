@@ -78,6 +78,14 @@ func _main(overlay :Control, screenOffset : Vector2) -> void:
 		overlay.draw_circle(_worldToScreenPosition(target_obj,target_obj.DestinationDelta) + screenOffset,4,SECOND_DOT_COLOR  * TRANSPARENCY)
 	elif target_obj is PeriodicTimer:
 		for connection in target_obj.connections:
+			if connection.interactable == null:
+				continue
 			var interactable_obj: ObjectInteractable = target_obj.get_node(connection.interactable)
 			overlay.draw_line(_worldToScreenPosition(target_obj) + screenOffset, _worldToScreenPosition(interactable_obj) + screenOffset, OUTLINE_COLOR * TRANSPARENCY, 5)
-	pass
+	elif target_obj is ButtonObj or target_obj is KeyObj:
+		for interaction in target_obj.interactions:
+			if interaction.interactable == null:
+				continue
+			var interactable_obj: ObjectInteractable = target_obj.get_node(interaction.interactable)
+			overlay.draw_line(_worldToScreenPosition(target_obj) + screenOffset, _worldToScreenPosition(interactable_obj) + screenOffset, OUTLINE_COLOR * TRANSPARENCY, 5)
+		

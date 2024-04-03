@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://du36k4g5svai3"]
+[gd_scene load_steps=23 format=3 uid="uid://du36k4g5svai3"]
 
 [ext_resource type="PackedScene" uid="uid://ckew637ot2m0i" path="res://src/objects/Platform.tscn" id="1_3lw1l"]
 [ext_resource type="Script" path="res://src/Level.gd" id="1_m0kto"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qny4rb3ykp28" path="res://src/objects/Goo.tscn" id="5_t53vl"]
 [ext_resource type="PackedScene" uid="uid://b4xunxy4vkl0s" path="res://src/sosivo/prefabs/MovingPlatform.tscn" id="6_3ui4n"]
 [ext_resource type="PackedScene" uid="uid://ccmq77qe4la" path="res://src/objects/PeriodicTimer.tscn" id="7_8ss7w"]
+[ext_resource type="Script" path="res://src/resources/TimerConnection.gd" id="8_gbsuk"]
 [ext_resource type="PackedScene" uid="uid://bxg270vntsouh" path="res://src/objects/Gate.tscn" id="9_60672"]
 [ext_resource type="PackedScene" uid="uid://d0qrg3rcskkx3" path="res://src/objects/Key.tscn" id="10_1k2cq"]
 [ext_resource type="Script" path="res://src/resources/Interaction.gd" id="11_881yx"]
@@ -15,15 +16,47 @@
 [ext_resource type="PackedScene" uid="uid://4o6evssusvq0" path="res://src/objects/Exit.tscn" id="13_e45qv"]
 [ext_resource type="PackedScene" uid="uid://cc54w6n5ncad1" path="res://src/objects/Player.tscn" id="14_o64fp"]
 
+[sub_resource type="Resource" id="Resource_ycknl"]
+script = ExtResource("8_gbsuk")
+interactable = NodePath("../MovingPlatform")
+mode = 2
+phase_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_p0ssg"]
+script = ExtResource("8_gbsuk")
+interactable = NodePath("../MovingPlatform2")
+mode = 0
+phase_shift = 0.25
+
+[sub_resource type="Resource" id="Resource_cebjb"]
+script = ExtResource("8_gbsuk")
+interactable = NodePath("../MovingPlatform3")
+mode = 0
+phase_shift = 0.5
+
+[sub_resource type="Resource" id="Resource_hnlk2"]
+script = ExtResource("8_gbsuk")
+interactable = NodePath("../MovingPlatform4")
+mode = 0
+phase_shift = 0.75
+
+[sub_resource type="Resource" id="Resource_7evgf"]
+script = ExtResource("8_gbsuk")
+interactable = NodePath("../MovingPlatform5")
+mode = 0
+phase_shift = 1.0
+
 [sub_resource type="Resource" id="Resource_gjcj3"]
 script = ExtResource("11_881yx")
 interactable = NodePath("../Gate")
 mode = 0
+trigger_mode = 2
 
 [sub_resource type="Resource" id="Resource_8l63m"]
 script = ExtResource("11_881yx")
-interactable = NodePath("../MovingPlatform")
+interactable = NodePath("../PeriodicTimer")
 mode = 0
+trigger_mode = 2
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_m0kto")
@@ -36,6 +69,7 @@ scale = Vector2(10.52, 1)
 position = Vector2(-323, 120)
 
 [node name="PlayerRespawnPoint" type="Node2D" parent="."]
+position = Vector2(-63, 37)
 script = ExtResource("4_7pvq8")
 
 [node name="Goo" parent="." instance=ExtResource("5_t53vl")]
@@ -43,11 +77,29 @@ position = Vector2(623, 214)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("6_3ui4n")]
 position = Vector2(179, 99)
-_originFlag = false
+DestinationDelta = Vector2(100, 0)
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("6_3ui4n")]
+position = Vector2(179, 29)
+DestinationDelta = Vector2(100, 0)
+
+[node name="MovingPlatform3" parent="." instance=ExtResource("6_3ui4n")]
+position = Vector2(179, -39)
+DestinationDelta = Vector2(100, 0)
+
+[node name="MovingPlatform4" parent="." instance=ExtResource("6_3ui4n")]
+position = Vector2(179, -109)
+DestinationDelta = Vector2(100, 0)
+
+[node name="MovingPlatform5" parent="." instance=ExtResource("6_3ui4n")]
+position = Vector2(179, -179)
+DestinationDelta = Vector2(100, 0)
 
 [node name="PeriodicTimer" parent="." instance=ExtResource("7_8ss7w")]
-position = Vector2(-115, 41)
+position = Vector2(-160, -133)
 cycle_time = 5.0
+connections = Array[ExtResource("8_gbsuk")]([SubResource("Resource_ycknl"), SubResource("Resource_p0ssg"), SubResource("Resource_cebjb"), SubResource("Resource_hnlk2"), SubResource("Resource_7evgf")])
+initial_behavior = 3
 
 [node name="Gate" parent="." instance=ExtResource("9_60672")]
 position = Vector2(-463, 85)
@@ -63,8 +115,11 @@ interactions = Array[ExtResource("11_881yx")]([SubResource("Resource_8l63m")])
 [node name="JumpPad" parent="." instance=ExtResource("12_lpfcl")]
 position = Vector2(425, 148)
 
+[node name="JumpPad2" parent="." instance=ExtResource("12_lpfcl")]
+position = Vector2(39, 146)
+
 [node name="Exit" parent="." instance=ExtResource("13_e45qv")]
 position = Vector2(-693, 93)
 
 [node name="Player" parent="." instance=ExtResource("14_o64fp")]
-position = Vector2(2, 16)
+position = Vector2(-63, 37)

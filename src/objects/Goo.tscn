@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://qny4rb3ykp28"]
+[gd_scene load_steps=5 format=3 uid="uid://qny4rb3ykp28"]
 
 [ext_resource type="Script" path="res://src/objects/Goo.gd" id="1_gmimu"]
 [ext_resource type="Texture2D" uid="uid://cabwwfn2u5qlb" path="res://icon.svg" id="1_y2y18"]
+[ext_resource type="Material" uid="uid://hoo7ctuf34o7" path="res://src/materials/Goo.tres" id="2_5jvj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmr0a"]
 size = Vector2(128, 128)
 
 [node name="Goo" type="Node2D"]
+z_index = 8
 script = ExtResource("1_gmimu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.599649, 0.055132, 0.642706, 1)
+material = ExtResource("2_5jvj8")
 texture = ExtResource("1_y2y18")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -18,4 +20,5 @@ collision_layer = 8
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_lmr0a")

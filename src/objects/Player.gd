@@ -25,6 +25,7 @@ var _controls_enabled := true
 
 var _current_frame = 0
 var _last_frame_change_time = 0
+var _frame_count
 
 var _facing_right = true
 
@@ -74,6 +75,8 @@ func _ready() -> void:
 	interaction_area.body_entered.connect(_on_body_entered_interaction_area)
 	interaction_area.body_exited.connect(_on_body_exited_interaction_area)
 	
+	_frame_count = sprite.hframes * sprite.vframes
+	
 	Game.victory.connect(func(): _controls_enabled = false)
 	Game.start.connect(func(): _controls_enabled = true)
 
@@ -100,7 +103,7 @@ func _animate_sprite() -> void:
 
 	if time - _last_frame_change_time > 1.0 / anim_speed:
 		_current_frame += -1 if _facing_right else 1
-		_current_frame = (_current_frame + 5) % 5
+		_current_frame = (_current_frame + _frame_count) % _frame_count
 		sprite.frame = _current_frame
 		_last_frame_change_time = time
 	

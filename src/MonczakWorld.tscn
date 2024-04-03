@@ -1,12 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg3wme6btdskh"]
+[gd_scene load_steps=2 format=3 uid="uid://cg3wme6btdskh"]
 
 [ext_resource type="PackedScene" uid="uid://b307l3jmiw4cv" path="res://src/World.tscn" id="1_rodkb"]
-[ext_resource type="PackedScene" uid="uid://cc54w6n5ncad1" path="res://src/objects/Player.tscn" id="2_ndp7v"]
 
 [node name="World" instance=ExtResource("1_rodkb")]
 
 [node name="Camera2D" parent="." index="0" node_paths=PackedStringArray("target")]
-target = NodePath("../Player")
-
-[node name="Player" parent="." index="2" instance=ExtResource("2_ndp7v")]
-position = Vector2(2, 16)
+target = NodePath("../Level/Player")

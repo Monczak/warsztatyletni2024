@@ -2,7 +2,7 @@ extends Resource
 class_name TimerConnection
 
 enum ConnectionMode {
-    SetOn, SetOff, Toggle
+	SetOn, SetOff, Toggle
 }
 
 @export var interactable: NodePath

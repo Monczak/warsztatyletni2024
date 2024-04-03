@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://hoo7ctuf34o7"]
+
+[ext_resource type="Shader" uid="uid://oper7mp6t1pk" path="res://src/materials/GooShader.tres" id="1_bv06w"]
+
+[resource]
+shader = ExtResource("1_bv06w")
+shader_parameter/wave_squish = 10.0
+shader_parameter/wave_frequency = 6.0
+shader_parameter/wave_quantization = 1.0
+shader_parameter/wave_amplitude = 0.03
+shader_parameter/wave_offset = -0.03

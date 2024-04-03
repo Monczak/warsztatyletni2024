@@ -7,6 +7,7 @@
 size = Vector2(50, 13)
 
 [node name="JumpPad" type="Node2D"]
+z_index = 5
 script = ExtResource("1_yal5c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
