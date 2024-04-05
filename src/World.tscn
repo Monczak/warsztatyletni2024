@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/camera/Camera.gd" id="1_5iml6"]
 [ext_resource type="Script" path="res://src/World.gd" id="1_fbkx8"]
 [ext_resource type="PackedScene" uid="uid://cc54w6n5ncad1" path="res://src/objects/Player.tscn" id="2_2o6v2"]
-[ext_resource type="PackedScene" uid="uid://yje3nh2avahr" path="res://src/levels/ExampleLevel1.tscn" id="3_3nkrp"]
+[ext_resource type="PackedScene" uid="uid://7d6jr3pa22kk" path="res://src/levels/ExampleLevel2.tscn" id="3_b0nqm"]
 [ext_resource type="Script" path="res://src/Particles.gd" id="5_drron"]
 [ext_resource type="PackedScene" uid="uid://cyo3cjknpjwht" path="res://src/particles/PlayerDeathParticles.tscn" id="6_vqegi"]
 [ext_resource type="PackedScene" uid="uid://bpl8ff35757bq" path="res://src/Background.tscn" id="7_w5hwx"]
@@ -11,7 +11,7 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_fbkx8")
 player_tscn = ExtResource("2_2o6v2")
-level_tscn = ExtResource("3_3nkrp")
+level_tscn = ExtResource("3_b0nqm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_5iml6")

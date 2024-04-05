@@ -10,25 +10,25 @@ var _level: Level
 
 
 func _enter_tree() -> void:
-    var level_inst = level_tscn.instantiate()
-    add_child(level_inst)
-    _level = level_inst
+	var level_inst = level_tscn.instantiate()
+	add_child(level_inst)
+	_level = level_inst
 
 
 func get_level() -> Level:
-    return _level
+	return _level
 
 
 func get_camera() -> Camera:
-    return _camera
-    
+	return _camera
+	
 
 func get_particles() -> Particles:
-    return _particles
+	return _particles
 
-    
+	
 func spawn_player() -> Player:
-    var player := player_tscn.instantiate() as Player
-    player.global_position = get_level().get_player_respawn_point().global_position
-    _level.add_child(player)    
-    return player
+	var player := player_tscn.instantiate() as Player
+	player.global_position = get_level().get_player_respawn_point().global_position
+	_level.add_child(player)    
+	return player

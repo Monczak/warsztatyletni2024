@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qny4rb3ykp28" path="res://src/objects/Goo.tscn" id="3_ifwry"]
 [ext_resource type="PackedScene" uid="uid://yh50ob3gsxfb" path="res://src/objects/Button.tscn" id="4_ym6wj"]
 [ext_resource type="Script" path="res://src/resources/Interaction.gd" id="5_3bj8w"]
-[ext_resource type="PackedScene" uid="uid://b4xunxy4vkl0s" path="res://src/objects/MovingPlatform.tscn" id="5_p3f6d"]
+[ext_resource type="PackedScene" path="res://src/objects/MovingPlatform.tscn" id="5_p3f6d"]
 [ext_resource type="PackedScene" uid="uid://cc54w6n5ncad1" path="res://src/objects/Player.tscn" id="7_s0pkk"]
 [ext_resource type="PackedScene" uid="uid://j0lb6kqeeuos" path="res://src/objects/Box.tscn" id="8_1e5ki"]
 [ext_resource type="PackedScene" uid="uid://4o6evssusvq0" path="res://src/objects/Exit.tscn" id="9_1jn0v"]

@@ -3,6 +3,6 @@ extends GPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    emitting = true
-    finished.connect(func(): queue_free())
+	emitting = true
+	finished.connect(func(): queue_free())
 

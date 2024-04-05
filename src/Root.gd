@@ -5,8 +5,8 @@ class_name Root
 
 
 func load_world() -> void:
-    if has_node("World"):
-        remove_child(get_node("World"))
-    
-    var world = world_tscn.instantiate()
-    add_child(world)
+	if has_node("World"):
+		remove_child(get_node("World"))
+	
+	var world = world_tscn.instantiate()
+	add_child(world)
